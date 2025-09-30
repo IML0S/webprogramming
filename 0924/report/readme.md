@@ -81,7 +81,95 @@
 ---
 
 ## 10. 마우스 커서 제어
-----------------------------------------------------------------------------------------------------------
 
 * `cursor: pointer`, `cursor: help`, `cursor: progress`, `cursor: n-resize` 등 다양한 커서 모양 지정 가능
-```
+
+---
+
+# 웹 프로그래밍 5장 요약 (CSS3)
+
+## 1. 개요
+* HTML 태그의 위치를 조절할 수 있다.
+* 리스트, 표, 폼을 꾸밀 수 있다.
+* 애니메이션, 전환(transition), 변환(transform) 효과를 만들 수 있다.
+
+---
+
+## 2. 배치 (Layout)
+
+* 주요 프로퍼티: `display`, `position`, `left/right/top/bottom`, `float`, `z-index`, `visibility`, `overflow`
+
+### 박스 유형
+* **블록 박스**: 새 라인에서 시작, 전체 폭 차지
+* **인라인 박스**: 한 줄 안에 배치
+* `display` 속성
+  * `block`, `inline`, `inline-block`, `none`
+
+### position
+* `static` (기본)
+* `relative` (기본 위치에서 상대 이동)
+* `absolute` (기준 컨테이너 내 절대 위치)
+* `fixed` (브라우저 화면 기준 고정)
+* `float` (좌/우 배치)
+
+### 기타
+* `z-index`: 쌓임 순서
+* `visibility: hidden`: 공간은 남고 내용만 숨김
+* `overflow`: `hidden`, `visible`, `scroll`
+
+---
+
+## 3. 리스트 꾸미기
+
+* 배경색: `background`
+* 마커 위치: `list-style-position: inside | outside`
+* 마커 종류: `list-style-type: circle, square, decimal, upper-roman, lower-alpha, none`
+* 이미지 마커: `list-style-image: url("img.png")`
+* 응용: 네비게이션 메뉴 만들기 (inline-block, list-style-type: none)
+
+---
+
+## 4. 표 꾸미기
+
+* **테두리**: `border`, `border-collapse: collapse`
+* **셀 크기**: `width`, `height`
+* **여백/정렬**: `padding`, `text-align`
+* **색상**
+  * `thead`, `tfoot` 배경색 지정
+  * `tbody tr:nth-child(even)` → 줄무늬 효과
+  * `tr:hover` → 마우스 오버 시 색 변경
+
+---
+
+## 5. 폼(Form) 꾸미기
+
+* `input[type=text]`으로 스타일 지정
+* 테두리: `border`, `border-radius`
+* 마우스/포커스 효과
+  * `:hover` → 마우스 올리면 배경색 변화
+  * `:focus` → 입력창 활성화 시 글자 크기 확대
+* 레이블 정렬: `label`, `span`에 `display: block/inline-block` 활용
+
+---
+
+## 6. CSS3 동적 효과
+
+### 애니메이션 (animation)
+* `@keyframes`로 시간별 스타일 변화 지정
+* 주요 속성
+  * `animation-name`
+  * `animation-duration`
+  * `animation-iteration-count`
+* 예: 글자 색, 크기 변화를 무한 반복
+
+### 전환 (transition)
+* CSS 프로퍼티 변화가 **서서히 진행**
+* 예: `transition: font-size 5s;`
+
+### 변환 (transform)
+* 2D 변환 함수
+  * `rotate(deg)` (회전)
+  * `skew(x,y)` (기울임)
+  * `translate(x,y)` (이동)
+  * `scale(x,y)` (확대/축소)
+* 마우스 이벤트(`:hover`, `:active`)로 추가 변환 가능
