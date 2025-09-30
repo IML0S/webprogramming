@@ -1,0 +1,55 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: sans-serif;
+}
+
+header {
+  background: yellow;
+  padding: 20px;
+}
+
+header h1 {
+  text-align: center;
+  margin: 0;
+}
+
+header article {
+  margin: 10px 0;
+}
+
+audio {
+  display: block;
+  margin: 10px auto;
+  max-width: 100%;
+}
+
+main {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}
+
+nav {
+  background: orange;
+  width: 15%;
+  padding: 20px;
+  box-sizing: border-box;
+float: left;
+}
+
+section {
+  background: lightblue;
+  width: 85%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+footer {
+  background: violet;
+  padding: 10px;
+  text-align: center;
+}
