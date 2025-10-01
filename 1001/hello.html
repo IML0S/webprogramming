@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>인사해요</title>
+</head>
+<body>
+<h3>인사해요</h3>
+<hr>
+<script>
+let ret = prompt("이름을 입력하세요");
+if(ret == null) { 
+    document.write("취소하셨습니다.");
+}
+else if(ret == "") {
+    document.write("이름을 입력하지 않았습니다.");
+}
+else {
+    document.write("안녕하세요, " + ret + "님!");
+}
+</script>
+</body>
+</html>

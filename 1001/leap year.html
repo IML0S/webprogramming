@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>윤년</title>
+</head>
+<body>
+<h3>윤년 계산기</h3>
+<hr>
+<script>
+let ret = prompt("연도를 입력하세요");
+if(ret%4 == 0 && ret%100 != 0 || ret%400 == 0) { 
+    document.write("윤년입니다.");
+}
+else{
+    document.write("평년입니다.");
+}
+</script>
+</body>
+</html>
