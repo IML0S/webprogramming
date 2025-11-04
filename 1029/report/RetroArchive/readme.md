@@ -1,1 +1,1 @@
-https://retro-time-traveler.lovable.app/compare
+https://retro-time-traveler.lovable.app
