@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>이상헌 — 포트폴리오</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #e9fdfc;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #58616a;
+      --primary: #00cec9;
+      --accent: #0984e3;
+      --glass: rgba(255,255,255,0.6);
+      --radius: 14px;
+      --max-width: 1100px;
+    }
+
+    [data-theme="dark"]{
+      --bg: #0b1020;
+      --card: #0f1724;
+      --text: #e6eef6;
+      --muted: #9aa6b2;
+      --glass: rgba(255,255,255,0.03);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family: 'Inter', 'Noto Sans KR', sans-serif;background:var(--bg);color:var(--text);}
+
+    .container{max-width:var(--max-width);margin:28px auto;padding:20px;}
+
+    /* NAV */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .avatar{width:56px;height:56px;border-radius:12px;overflow:hidden;flex:0 0 56px;border:2px solid var(--glass)}
+    .brand h1{font-size:18px;margin:0}
+    nav{display:flex;gap:12px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
+    nav a:hover{background:var(--glass);color:var(--text)}
+
+    .actions{display:flex;gap:8px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:10px;background:transparent;border:1px solid var(--glass);cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--primary),var(--accent));color:white;border:none}
+
+    /* LAYOUT */
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:24px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}header{flex-direction:column;align-items:flex-start}.brand h1{font-size:16px}.actions{margin-top:8px}}
+
+    /* HERO */
+    .hero{display:flex;gap:20px;align-items:center;padding:22px;border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,0.6),transparent);backdrop-filter: blur(6px);box-shadow:0 6px 18px rgba(16,24,40,0.06)}
+    .hero-left{flex:1}
+    .hero-right{width:240px;flex:0 0 240px}
+    .hero .title{font-size:22px;margin:0 0 6px}
+    .hero .subtitle{color:var(--muted);margin:0 0 12px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{background:var(--card);padding:6px 10px;border-radius:999px;font-weight:600;box-shadow:0 4px 14px rgba(2,6,23,0.04)}
+
+    /* PROFILE CARD */
+    .profile{padding:16px;border-radius:12px;background:var(--card);display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+    .profile img{width:120px;height:120px;border-radius:16px;object-fit:cover}
+    .profile h2{margin:0;font-size:18px}
+    .profile p{margin:0;color:var(--muted);font-size:14px}
+    .contact-list{width:100%;display:flex;flex-direction:column;gap:8px;margin-top:6px}
+    .contact-item{display:flex;align-items:center;gap:8px;justify-content:center;padding:8px;border-radius:8px;background:var(--glass)}
+
+    /* SKILLS */
+    .card{background:var(--card);padding:18px;border-radius:12px}
+    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    @media (max-width:520px){.skills{grid-template-columns:1fr}}
+    .skill{padding:10px;border-radius:8px;background:linear-gradient(180deg,rgba(0,0,0,0.02),transparent)}
+    .skill .name{font-weight:700;margin-bottom:8px}
+    .bar{height:10px;background:#e6eef6;border-radius:999px;overflow:hidden}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:999px}
+
+    /* PROJECTS */
+    .projects{display:grid;gap:12px}
+    .project{display:flex;gap:12px;padding:12px;border-radius:10px;align-items:flex-start}
+    .project img{width:140px;height:90px;object-fit:cover;border-radius:8px;flex:0 0 140px}
+    .project h3{margin:0 0 6px}
+    .project p{margin:0;color:var(--muted);font-size:14px}
+    .project .meta{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{background:var(--glass);padding:6px 8px;border-radius:999px;font-weight:700;font-size:12px}
+
+    /* FUTURE PLANS */
+    .timeline{position:relative;display:flex;flex-direction:column;gap:24px;margin-top:20px;padding-left:40px}
+    .timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--primary),var(--accent));border-radius:999px}
+    .timeline-item{position:relative;display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:12px;background:var(--glass);backdrop-filter:blur(10px);transition:all 0.3s ease;border:1px solid transparent}
+    .timeline-item:hover{transform:translateX(8px);border-color:var(--primary);box-shadow:0 8px 24px rgba(0,206,201,0.15)}
+    .timeline-icon{position:absolute;left:-40px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;flex:0 0 48px;font-size:22px;box-shadow:0 4px 16px rgba(0,206,201,0.3);transition:all 0.3s ease;border:3px solid var(--bg)}
+    .timeline-item:hover .timeline-icon{transform:rotate(360deg) scale(1.1);box-shadow:0 6px 20px rgba(0,206,201,0.5)}
+    .timeline-content{flex:1}
+    .timeline-content h4{margin:0 0 8px;font-size:17px;display:flex;align-items:center;gap:8px}
+    .timeline-content h4::after{content:'→';opacity:0;transform:translateX(-10px);transition:all 0.3s ease}
+    .timeline-item:hover .timeline-content h4::after{opacity:1;transform:translateX(0)}
+    .timeline-content p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+    .timeline-content .period{display:inline-block;padding:6px 12px;background:linear-gradient(90deg,var(--primary),var(--accent));color:white;border-radius:6px;font-size:12px;font-weight:700;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,206,201,0.2)}
+    @media (max-width:720px){.timeline{padding-left:30px}.timeline::before{left:15px}.timeline-icon{left:-30px;width:40px;height:40px;font-size:18px}}
+
+    /* FOOTER */
+    footer{text-align:center;color:var(--muted);margin-top:24px}
+
+    /* Utilities */
+    .row{display:flex;gap:10px;align-items:center}
+    a.icon{display:inline-flex;align-items:center;gap:8px}
+
+    /* small screen tweaks */
+    @media (max-width:720px){.hero-right{display:none}.grid{gap:18px}}
+
+    /* subtle transitions */
+    a,button{transition:all .18s ease}
+
+  </style>
+</head>
+<body>
+  <div class="container" data-aos-easing="ease-out-cubic">
+
+    <header>
+      <div class="brand">
+        <div class="avatar"><img src="image/game.png" alt="game" style="width:100%;height:100%;object-fit:cover"/></div>
+        <div>
+          <h1>이상헌 — Game Dev hopeful</h1>
+          <div style="font-size:13px;color:var(--muted)">경성대학교 소프트웨어학과 • 부산</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#plans">Plans</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="actions">
+        <button class="btn" id="themeToggle" title="다크 모드 전환">🌙</button>
+        <a href="#contact" class="btn primary">Contact</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" data-aos="fade-up">
+        <div class="hero-left">
+          <h2 class="title">안녕하세요, 이상헌입니다.</h2>
+          <p class="subtitle">게임 개발을 배우고 있는 소프트웨어 학부생 — 게임/그래픽/시스템에 관심이 많습니다.</p>
+
+          <div class="chips">
+            <span class="chip">Unity</span>
+            <span class="chip">Unreal Engine</span>
+            <span class="chip">C</span>
+            <span class="chip">Python</span>
+          </div>
+
+          <div style="margin-top:14px" class="row">
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="profile card" data-aos="fade-left">
+            <img src="image/이상헌.png" alt="profile"/>
+            <h2>이상헌</h2>
+            <p>게임 개발 지망생</p>
+            <div class="contact-list">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid" style="margin-top:20px">
+        <div>
+          <!-- ABOUT -->
+          <section id="about" class="card" data-aos="fade-up">
+            <h2>About</h2>
+            <p style="color:var(--muted)">경성대학교 소프트웨어학과 재학 중인 <strong>이상헌</strong>입니다. 저는 게임 개발을 배우고 있으며, 프로젝트를 통해 실무 경험을 쌓고 있습니다. 성실하게 배우고 빠르게 적용하는 것을 강점으로 합니다.</p>
+          </section>
+
+          <!-- SKILLS -->
+          <section id="skills" class="card" style="margin-top:14px" data-aos="fade-up">
+            <h2>Skills</h2>
+            <div class="skills" style="margin-top:10px">
+              <div class="skill">
+                <div class="name">HTML</div>
+                <div class="bar"><i style="width:50%"></i></div>
+              </div>
+              <div class="skill">
+                <div class="name">Java</div>
+                <div class="bar"><i style="width:45%"></i></div>
+              </div>
+              <div class="skill">
+                <div class="name">C</div>
+                <div class="bar"><i style="width:50%"></i></div>
+              </div>
+              <div class="skill">
+                <div class="name">Python</div>
+                <div class="bar"><i style="width:60%"></i></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- PROJECTS -->
+          <section id="projects" class="card" style="margin-top:14px" data-aos="fade-up">
+            <h2>Projects</h2>
+            <div class="projects" style="margin-top:10px">
+              <article class="project" data-aos="zoom-in">
+                <img src="image/Interviewmate.png" alt="Interviewmate" />
+                <div>
+                  <h3>Interviewmate</h3>
+                  <p>웹프로그래밍 강의에서 만든 웹 Interviewmate 입니다. 바이브 코딩을 바탕으로 면접에 대비하는 기능들을 구현하였습니다.</p>
+                  <div class="meta">
+                    <span class="tag">Lovable</span>
+                    <span class="tag">Chatgpt</span>
+                    <span class="tag">Claude</span>
+                    <a class="tag" href="https://kimsm12.github.io/webpro/1105/interviewmate/interviewmate.html" target="_blank">Visit</a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="project" data-aos="zoom-in" data-aos-delay="80">
+                <img src="image/나으리.png" alt="나으리" />
+                <div>
+                  <h3>나으리</h3>
+                 <p>웹프로그래밍 강의에서 만든 웹 나으리 입니다. 바이브 코딩을 바탕으로 현재 자신이 겪고 있는 증상에 맞는 약을 처방하는 기능을 구현하였습니다.</p>
+                  <div class="meta">
+                    <span class="tag">Lovable</span>
+                    <span class="tag">Chatgpt</span>
+                    <span class="tag">Claude</span>
+                    <a class="tag" href="https://api-craftsman-guide.lovable.app/" target="_blank">Visit</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- FUTURE PLANS -->
+          <section id="plans" class="card" style="margin-top:14px" data-aos="fade-up">
+            <h2>Future Plans</h2>
+            <div class="timeline">
+              <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-icon"></div>
+                <div class="timeline-content">
+                  <span class="period">2025</span>
+                  <h4>게임 엔진 심화 학습</h4>
+                  <p>Unity와 Unreal Engine의 기능을 학습하고, 3D 그래픽 프로그래밍과 물리 엔진을 깊이 있게 공부할 계획입니다.</p>
+                </div>
+              </div>
+
+              <div class="timeline-item" data-aos="fade-right" data-aos-delay="80">
+                <div class="timeline-icon"></div>
+                <div class="timeline-content">
+                  <span class="period">2026</span>
+                  <h4>융합 전공 강의 이수</h4>
+                  <p>게임 vr 콘텐츠 융합 전공을 신청하여 그와 관련된 강의들을 들으며 개발 능력들을 키워갈 것입니다.</p>
+                </div>
+              </div>
+
+              <div class="timeline-item" data-aos="fade-right" data-aos-delay="160">
+                <div class="timeline-icon"></div>
+                <div class="timeline-content">
+                  <span class="period">2026 하반기</span>
+                  <h4>진행 중인 프로젝트 완성</h4>
+                  <p>앞서 학습한 내용을 바탕으로 플랫폼 Steam에 현재 개발 진행 중인 게임을 완성시켜 배포까지의 과정을 경험하고자 합니다.</p>
+                </div>
+              </div>
+
+              <div class="timeline-item" data-aos="fade-right" data-aos-delay="240">
+                <div class="timeline-icon"></div>
+                <div class="timeline-content">
+                  <span class="period">장기 목표</span>
+                  <h4>게임 개발자로서 성장</h4>
+                  <p>게임 프로그래머 취업하여, 플레이어에게 즐거움을 주는 게임을 만드는 개발자가 되고 싶습니다.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <aside>
+          <section class="card" data-aos="fade-left">
+            <h3>Contact</h3>
+            <p style="color:var(--muted)">프로젝트 협업 / 인턴 / 채용 문의는 아래 연락처로 주세요.</p>
+            <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+              <a class="contact-item" href="tel:0100000000">📞 010-000-0000</a>
+              <a class="contact-item" href="mailto:akadai0123@naver.com">✉️ akadai0123@naver.com</a>
+              <a class="contact-item" href="https://www.instagram.com/isangheon24/" target="_blank">📷 @isangheon24</a>
+            </div>
+          </section>
+
+          <section class="card" style="margin-top:12px" data-aos="fade-left" data-aos-delay="60">
+            <h3>Quick Links</h3>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+              <a class="btn" href="https://github.com/IML0S" target="_blank">View GitHub</a>
+              <button class="btn" id="downloadResume">자기소개 다운로드 (PDF)</button>
+            </div>
+          </section>
+
+        </aside>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Init AOS
+    AOS.init({duration:700, once:true});
+
+    // Theme toggle
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', ()=>{
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if(isDark){ 
+        document.documentElement.removeAttribute('data-theme'); 
+        themeBtn.textContent='🌙'
+      } else { 
+        document.documentElement.setAttribute('data-theme','dark'); 
+        themeBtn.textContent='☀️' 
+      }
+    });
+
+    // Smooth scrolling for nav
+    document.querySelectorAll('nav a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault(); 
+        document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+      })
+    });
+
+    // Simple PDF download using window.print as fallback
+    document.getElementById('downloadResume').addEventListener('click', ()=>{
+      window.print();
+    });
+  </script>
+</body>
+</html>
